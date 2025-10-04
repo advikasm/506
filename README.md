@@ -40,15 +40,15 @@ The COO format stores only the nonzero entries of a sparse matrix using three pa
 - The CUDA program (spmv-cuda.cu) adapts the same COO idea but offloads the computation to the GPU.
 
 ### Core Modifications
-## Memory Allocation:
+# Memory Allocation:
 cudaMalloc used for all COO arrays and vectors.
-## Data Movement:
+# Data Movement:
 Host–device copies with cudaMemcpy; result fetched back after kernel execution.
-## Parallel Kernel:
+# Parallel Kernel:
 Execution Setup:
-## Threads per block: 256
+# Threads per block: 256
 Blocks: (nnz + 255)/256
-## Atomic Operations:
+# Atomic Operations:
 Needed since multiple threads may update the same row in y.
 
 
