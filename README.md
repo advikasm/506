@@ -49,9 +49,9 @@ Execution Setup:
 - Threads per block: 256
 Blocks: (nnz + 255)/256## Figures
 
-![CPU vs GPU Runtime](perf-cmp.jpg)
+![CPU vs GPU Runtime]("C:\Users\DELL\Downloads\output (4).png")
 
-![CUDA Speedup](speedup.jpg)
+![CUDA Speedup]("C:\Users\DELL\Downloads\output (5).png")
 
 - Atomic Operations:
 Needed since multiple threads may update the same row in y.
