@@ -57,7 +57,25 @@ Blocks: (nnz + 255)/256## Figures
 - Atomic Operations:
 Needed since multiple threads may update the same row in y.
 
-<img width="471" height="177" alt="Screenshot 2025-10-03 230451" src="https://github.com/user-attachments/assets/53ab274f-6489-4c67-bf12-e098583fe8b7" />
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/53ab274f-6489-4c67-bf12-e098583fe8b7"
+       alt="Screenshot"
+       width="500"/>
+</p>
+
+<p align="center">
+  <img src="perf-cmp.jpg" alt="Performance Comparison" width="500"/>
+  <br/>
+  <img src="another-image.jpg" alt="Second Image" width="500"/>
+</p>
+
+<p align="center">
+  <img src="perf-cmp.jpg" alt="Performance Comparison" width="500"/>
+  <br/>
+  <img src="another-image.jpg" alt="Second Image" width="500"/>
+</p>
+
 
 
 <img width="1979" height="1180" alt="output (4)" src="https://github.com/user-attachments/assets/481dc157-3aa8-447c-88d4-a3d6509ceb2a" />
