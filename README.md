@@ -61,7 +61,7 @@ Needed since multiple threads may update the same row in y.
 <p align="center">
   <img src="https://github.com/user-attachments/assets/53ab274f-6489-4c67-bf12-e098583fe8b7"
        alt="Screenshot"
-       width="500"/>
+       width="900"/>
 </p>
 
 <p align="center">
@@ -76,12 +76,17 @@ Needed since multiple threads may update the same row in y.
   <img src="another-image.jpg" alt="Second Image" width="500"/>
 </p>
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/481dc157-3aa8-447c-88d4-a3d6509ceb2a"
+       alt="output (4)"
+       width="600"/>
+  <br/>
+  <img src="https://github.com/user-attachments/assets/fb4bb69f-21ca-4f70-8d85-b4fd6fd4b56b"
+       alt="output (5)"
+       width="600"/>
+</p>
 
 
-<img width="1979" height="1180" alt="output (4)" src="https://github.com/user-attachments/assets/481dc157-3aa8-447c-88d4-a3d6509ceb2a" />
-
-
-<img width="1979" height="1180" alt="output (5)" src="https://github.com/user-attachments/assets/fb4bb69f-21ca-4f70-8d85-b4fd6fd4b56b" />
 
 ### Performance Explanation
 The performance results show a consistent and significant speedup for the CUDA version of SpMV compared to the sequential CPU version across all tested matrices. The reasons are:
