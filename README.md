@@ -5,9 +5,6 @@ This project implements **Sparse Matrix–Vector multiplication (SpMV)** in the 
 Two implementations are compared:
 1. A **sequential CPU baseline** (`spmv.c`)  
 2. A **CUDA GPU version** (`spmv-cuda.cu`)  
-
-Both versions are benchmarked on real sparse matrices from the SuiteSparse collection.
-
 ---
 
 ## COO Format
