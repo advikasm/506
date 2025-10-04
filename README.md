@@ -51,6 +51,10 @@ Blocks: (nnz + 255)/256## Figures
 
 ![CPU vs GPU Runtime]("C:\Users\DELL\Downloads\output (4).png")
 
+
+
+<img width="1979" height="1180" alt="output (4)" src="https://github.com/user-attachments/assets/481dc157-3aa8-447c-88d4-a3d6509ceb2a" />
+
 ![CUDA Speedup]("C:\Users\DELL\Downloads\output (5).png")
 
 - Atomic Operations:
