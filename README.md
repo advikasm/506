@@ -61,20 +61,9 @@ Needed since multiple threads may update the same row in y.
 <p align="center">
   <img src="https://github.com/user-attachments/assets/53ab274f-6489-4c67-bf12-e098583fe8b7"
        alt="Screenshot"
-       width="900"/>
+       width="600"/>
 </p>
 
-<p align="center">
-  <img src="perf-cmp.jpg" alt="Performance Comparison" width="500"/>
-  <br/>
-  <img src="another-image.jpg" alt="Second Image" width="500"/>
-</p>
-
-<p align="center">
-  <img src="perf-cmp.jpg" alt="Performance Comparison" width="500"/>
-  <br/>
-  <img src="another-image.jpg" alt="Second Image" width="500"/>
-</p>
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/481dc157-3aa8-447c-88d4-a3d6509ceb2a"
