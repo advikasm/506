@@ -39,6 +39,12 @@ The COO format stores only the nonzero entries of a sparse matrix using three pa
 - Timing symmetry. We mirror the CPU flow: a warm-up kernel timed with CUDA events, then compute num_iterations from the warm-up, then time the main kernel loop and report ms/iter, GFLOP/s, GB/s.
 - The CUDA program (spmv-cuda.cu) adapts the same COO idea but offloads the computation to the GPU.
 
+## Advantages
+- Thousands of threads allow nearly all nonzeros to be processed in parallel.
+- GPU memory bandwidth (~900 GB/s) far exceeds CPU bandwidth.
+- SIMT model makes this fine-grained parallelism practical
+
+
 ### Core Modifications
 - Memory Allocation:
 cudaMalloc used for all COO arrays and vectors.
@@ -74,11 +80,12 @@ The only limitation is row contention. For matrices with rows that have many non
 
 
 
+## Discussion: 
+The results confirm that sparse matrix–vector multiplication in COO format maps well to GPUs. Small problems run fast on both CPU and GPU, but large real-world sparse matrices achieve an order-of-magnitude speedup on CUDA thanks to massive parallelism and higher memory bandwidth.
 
+- The results highlight a few important points:
+- 1. Small matrices: Both CPU and GPU finish quickly, but CUDA overhead reduces relative gains.
+- 2. Medium to large matrices: GPU utilization increases, producing speedups of 10–40×.
+- 3. Bottlenecks: The only slowdown occurs when rows have many nonzeros (atomic contention).
+- 4. SpMV is fundamentally memory-bound, so the GPU’s wider memory bandwidth explains most of the observed acceleration.
 
-
-
-## Advantages
-- Thousands of threads allow nearly all nonzeros to be processed in parallel.
-- GPU memory bandwidth (~900 GB/s) far exceeds CPU bandwidth.
-- SIMT model makes this fine-grained parallelism practical
