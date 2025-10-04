@@ -48,6 +48,9 @@ Host–device copies with cudaMemcpy; result fetched back after kernel execution
 Execution Setup:
 - Threads per block: 256
 Blocks: (nnz + 255)/256## Figures
+- Atomic Operations:
+Needed since multiple threads may update the same row in y.
+
 
 
 <img width="1979" height="1180" alt="output (4)" src="https://github.com/user-attachments/assets/481dc157-3aa8-447c-88d4-a3d6509ceb2a" />
@@ -55,10 +58,22 @@ Blocks: (nnz + 255)/256## Figures
 
 <img width="1979" height="1180" alt="output (5)" src="https://github.com/user-attachments/assets/fb4bb69f-21ca-4f70-8d85-b4fd6fd4b56b" />
 
+### Performance Explanation
+The performance results show a consistent and significant speedup for the CUDA version of SpMV compared to the sequential CPU version across all tested matrices. The reasons are:
+- Massive parallelism.
+In COO SpMV, each nonzero entry contributes one multiply-add. On CPU, these are executed one after another. On GPU, we launch thousands of threads so that each nonzero can be processed in parallel, leading to orders-of-magnitude reductions in runtime.
+- Data-parallel suitability.
+Sparse matrix–vector multiply is naturally data-parallel because each nonzero operation is independent except for accumulation into the same row. CUDA atomics handle this safely and efficiently in hardware, especially when row contention is low.
+- Matrix size sensitivity.
+For small matrices (D6-6, bfly, dictionary28), the absolute runtimes are very small for both CPU and GPU. Here, speedups are less dramatic in absolute time, but still measurable.
+For large matrices (Ga3As3H12, pkustk14, roadNet-CA), the GPU parallelism really shows: speedups reach 8×–40×, as GPU threads can hide memory latency and keep many cores busy.
+Memory bandwidth utilization.
+SpMV is memory-bound: performance depends heavily on how fast values and indices can be read. GPUs offer much higher memory bandwidth than CPUs, which is why even with atomic operations, the CUDA kernel sustains far higher throughput (GB/s).
+- Irregularity overhead.
+The only limitation is row contention. For matrices with rows that have many nonzeros (e.g., roadNet-CA), atomics can serialize some updates, but even then the GPU is substantially faster than the CPU.
 
 
-- Atomic Operations:
-Needed since multiple threads may update the same row in y.
+
 
 
 
