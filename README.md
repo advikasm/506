@@ -1,5 +1,5 @@
 Readme 
-Our CUDA Implementation vs. the Base
+##Our CUDA Implementation vs. the Base
 Same math, new schedule. We keep the exact arithmetic (y[row] += val * x[col]) but assign one CUDA thread per nonzero. That exposes massive parallelism versus the CPU’s single loop.
 Correctness under concurrency. Because many nonzeros share the same destination row, we use atomicAdd(&y[row], val*x[col]) to prevent lost updates—on CPU, the loop’s serial order avoids races; on GPU, atomics make concurrent accumulations correct.
 Launch configuration. We use a grid of (nnz + 255)/256 blocks with 256 threads each, which balances load and achieves good GPU occupancy.
